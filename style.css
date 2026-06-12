@@ -56,6 +56,46 @@ h2 {
   color: #111827;
 }
 
+.workload-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.workload-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 240px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.workload-card h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f2937;
+}
+
+.workload-card p {
+  margin: 12px 0 4px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.workload-card span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.workload-normal {
+  border-left: 6px solid #2563eb;
+}
+
+.workload-high {
+  border-left: 6px solid #f97316;
+}
+
 .table-container {
   margin-top: 16px;
   background-color: white;
@@ -66,7 +106,7 @@ h2 {
 
 table {
   width: 100%;
-  min-width: 1250px;
+  min-width: 1400px;
   border-collapse: collapse;
 }
 
@@ -118,6 +158,16 @@ td {
 }
 
 .deadline-soon {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.workload-point-normal {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.workload-point-high {
   background-color: #ffedd5;
   color: #9a3412;
 }
