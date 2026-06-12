@@ -52,6 +52,41 @@
     "actionOwnerType": "Internal",
     "manualLink": "https://example.com",
     "lastUpdate": "2026-06-11"
+  },
+  {
+    "id": "P-004",
+    "projectName": "Machine C Operation Manual",
+    "owner": "Nok",
+    "stage": "Draft",
+    "status": "On Track",
+    "priority": "Low",
+    "riskLevel": "Low",
+    "deadline": "2026-07-05",
+    "workloadPoint": 2,
+    "blockReason": "",
+    "problem": "",
+    "nextAction": "Create first draft",
+    "actionOwner": "Nok",
+    "actionOwnerType": "Internal",
+    "manualLink": "https://example.com",
+    "lastUpdate": "2026-06-12"
+  },
+  {
+    "id": "P-005",
+    "projectName": "Packing Line Troubleshooting Guide",
+    "owner": "May",
+    "stage": "Done",
+    "status": "Done",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "deadline": "2026-06-18",
+    "workloadPoint": 1,
+    "blockReason": "",
+    "problem": "",
+    "nextAction": "No action required",
+    "actionOwner": "May",
+    "actionOwnerType": "Internal",
+    "manualLink": "https://example.com",
+    "lastUpdate": "2026-06-12"
   }
 ]
-``
