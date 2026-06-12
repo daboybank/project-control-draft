@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const priorityFilter = document.getElementById("priorityFilter");
   const resetFilterButton = document.getElementById("resetFilterButton");
 
-  fetch("data-sample.json?v=30")
+  fetch("data-sample.json?v=41")
     .then(function(response) {
       if (!response.ok) {
         throw new Error("Cannot load data-sample.json");
       }
+
       return response.json();
     })
     .then(function(projects) {
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
           </td>
         </tr>
       `;
+
       console.error("Data loading error:", error);
     });
 
@@ -83,7 +85,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     workloadContainer.innerHTML = "";
 
-    Object.keys(workloadByOwner).forEach(function(owner) {
+    const owners = Object.keys(workloadByOwner).sort();
+
+    owners.forEach(function(owner) {
       const workload = workloadByOwner[owner];
       const workloadLevel = getWorkloadLevel(workload);
 
@@ -92,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       card.innerHTML = `
         <h3>${escapeHtml(owner)}</h3>
-        <p>${workload} pts</p>
-        <span>${workloadLevel.label}</span>
+        <p>${escapeHtml(workload)} pts</p>
+        <span>${escapeHtml(workloadLevel.label)}</span>
       `;
 
       workloadContainer.appendChild(card);
@@ -185,6 +189,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function setupFilters(projects) {
+    clearSelectOptions(ownerFilter);
+    clearSelectOptions(statusFilter);
+    clearSelectOptions(priorityFilter);
+
     fillSelect(ownerFilter, getUniqueValues(projects, "owner"));
     fillSelect(statusFilter, getUniqueValues(projects, "status"));
     fillSelect(priorityFilter, getUniqueValues(projects, "priority"));
@@ -203,14 +211,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  function clearSelectOptions(selectElement) {
+    selectElement.innerHTML = '<option value="All">All</option>';
+  }
+
   function applyFilters() {
-    const searchText = searchInput.value.toLowerCase();
+    const searchText = searchInput.value.toLowerCase().trim();
     const selectedOwner = ownerFilter.value;
     const selectedStatus = statusFilter.value;
     const selectedPriority = priorityFilter.value;
 
     const filteredProjects = allProjects.filter(function(project) {
-      const matchesSearch = project.projectName.toLowerCase().includes(searchText);
+      const projectName = String(project.projectName || "").toLowerCase();
+
+      const matchesSearch = projectName.includes(searchText);
       const matchesOwner = selectedOwner === "All" || project.owner === selectedOwner;
       const matchesStatus = selectedStatus === "All" || project.status === selectedStatus;
       const matchesPriority = selectedPriority === "All" || project.priority === selectedPriority;
@@ -231,9 +245,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function getUniqueValues(projects, key) {
-    const values = projects.map(function(project) {
-      return project[key];
-    });
+    const values = projects
+      .map(function(project) {
+        return project[key];
+      })
+      .filter(function(value) {
+        return value !== undefined && value !== null && value !== "";
+      });
 
     return Array.from(new Set(values)).sort();
   }
@@ -242,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const deadlineDate = new Date(deadline);
+    const deadlineDate = new Date(deadline + "T00:00:00");
     deadlineDate.setHours(0, 0, 0, 0);
 
     const difference = deadlineDate - today;
@@ -314,8 +332,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function getWorkloadPointClass(workloadPoint) {
-    if (workloadPoint >= 5) return "workload-point-high";
-    if (workloadPoint >= 3) return "workload-point-medium";
+    const point = Number(workloadPoint);
+
+    if (point >= 5) return "workload-point-high";
+    if (point >= 3) return "workload-point-medium";
     return "workload-point-normal";
   }
 
@@ -334,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const safeManualLink = escapeAttribute(manualLink);
 
-    return `${safeManualLink}Open Manual</a>`;
+    return `<a href="${safeManualLink}" target="_blank" rel="noopener noreferrer">Open Manual</a>`;
   }
 
   function escapeHtml(value) {
