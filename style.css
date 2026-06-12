@@ -114,6 +114,8 @@ select {
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 14px;
+  background-color: white;
+  color: #111827;
 }
 
 .reset-button {
@@ -160,6 +162,7 @@ td {
   border-bottom: 1px solid #e5e7eb;
   font-size: 13px;
   white-space: nowrap;
+  vertical-align: top;
 }
 
 tbody tr:hover {
