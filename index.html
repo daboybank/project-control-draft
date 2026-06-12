@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Project Control Dashboard</title>
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -66,6 +66,7 @@
             <th>Workload</th>
             <th>Block Reason</th>
             <th>Next Action</th>
+            <th>Action Owner</th>
             <th>Manual</th>
           </tr>
         </thead>
@@ -91,7 +92,10 @@
             <td>-</td>
             <td class="next-action">Final check before review</td>
             <td>
-              <a href="https://example.com" target="_blank">Open Manual</a>
+              <span class="badge action-owner-internal">Bank</span>
+            </td>
+            <td>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer">Open Manual</a>
             </td>
           </tr>
 
@@ -115,7 +119,10 @@
             <td class="block-reason">Waiting customer drawing</td>
             <td class="next-action action-warning">Follow up customer</td>
             <td>
-              <a href="https://example.com" target="_blank">Open Manual</a>
+              <span class="badge action-owner-external">Customer</span>
+            </td>
+            <td>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer">Open Manual</a>
             </td>
           </tr>
         </tbody>
