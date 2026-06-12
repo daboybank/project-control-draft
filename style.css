@@ -9,20 +9,9 @@ body {
   padding: 24px;
 }
 
-h1 {
-  margin-bottom: 8px;
-  color: #1f2937;
-}
-
-.subtitle {
-  margin-top: 0;
-  color: #6b7280;
-}
-
-h2 {
-  margin-top: 32px;
-  color: #1f2937;
-}
+h1 { color: #1f2937; }
+.subtitle { color: #6b7280; }
+h2 { margin-top: 32px; color: #1f2937; }
 
 .summary-container {
   display: flex;
@@ -36,21 +25,13 @@ h2 {
   border-radius: 12px;
   padding: 20px;
   width: 240px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   border-left: 6px solid #2563eb;
 }
 
-.summary-card h3 {
-  margin: 0;
-  font-size: 16px;
-  color: #4b5563;
-}
-
 .summary-card p {
-  margin: 12px 0 0;
   font-size: 32px;
   font-weight: bold;
-  color: #111827;
 }
 
 .table-container {
@@ -58,49 +39,46 @@ h2 {
   background-color: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+table { width: 100%; border-collapse: collapse; }
 
 thead {
   background-color: #1f2937;
   color: white;
 }
 
-th {
-  text-align: left;
+th, td {
   padding: 14px;
-  font-size: 14px;
 }
 
 td {
-  padding: 14px;
   border-bottom: 1px solid #e5e7eb;
-  font-size: 14px;
 }
 
-.empty-message {
-  text-align: center;
-  color: #6b7280;
-  padding: 24px;
-}
+/* ✅ badge */
 
 .badge {
-  display: inline-block;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: bold;
 }
 
+/* ✅ status */
+
 .status-on-track {
   background-color: #dcfce7;
   color: #166534;
 }
+
+.status-blocked {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* ✅ priority */
 
 .priority-high {
   background-color: #fee2e2;
@@ -110,9 +88,5 @@ td {
 a {
   color: #2563eb;
   font-weight: bold;
-  text-decoration: none;
 }
-
-a:hover {
-  text-decoration: underline;
-}
+``
