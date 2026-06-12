@@ -1,7 +1,10 @@
 let allProjects = [];
 
 document.addEventListener("DOMContentLoaded", function() {
- DeadlineProjectsElement = document.getElementById("nearDeadlineProjects");  const totalProjectsElement = document.getElementById("totalProjects");
+  const totalProjectsElement = document.getElementById("totalProjects");
+  const highPriorityProjectsElement = document.getElementById("highPriorityProjects");
+  const blockedProjectsElement = document.getElementById("blockedProjects");
+  const nearDeadlineProjectsElement = document.getElementById("nearDeadlineProjects");
 
   const projectTableBody = document.getElementById("projectTableBody");
   const workloadContainer = document.getElementById("workloadContainer");
@@ -331,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const safeManualLink = escapeAttribute(manualLink);
 
-    return `<a href="${safeManualLink}" target="_blank" rel="noopener noreferrer">Open Manual</a>`;
+    return `${safeManualLink}Open Manual</a>`;
   }
 
   function escapeHtml(value) {
@@ -351,5 +354,3 @@ document.addEventListener("DOMContentLoaded", function() {
       .replaceAll(">", "&gt;");
   }
 });
-  const highPriorityProjectsElement = document.getElementById("highPriorityProjects");
-  const blockedProjectsElement = document.getElementById("blockedProjects");
