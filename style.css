@@ -107,7 +107,7 @@ h2 {
 
 table {
   width: 100%;
-  min-width: 1850px;
+  min-width: 2000px;
   border-collapse: collapse;
 }
 
@@ -149,6 +149,16 @@ td {
 }
 
 .priority-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.risk-low {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.risk-high {
   background-color: #fee2e2;
   color: #991b1b;
 }
