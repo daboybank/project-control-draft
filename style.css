@@ -1,126 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Control Dashboard</title>
-  <link rel="stylesheet" href="style.css?v=21">
-  <script src="app.js?v=21" defer></script>
-</head>
-<body>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-colorload-point-normal {  background-color: #f4f6f8;
+  background-color: #dbeafe;
+  color: #1e40af;
+}
 
-  <div class="page">
-    <header class="header">
-      <div>
-        <h1>Project Control Dashboard</h1>
-        <p class="subtitle">Team project status, workload, deadline, and blocked issue tracking.</p>
-      </div>
-    </header>
+.workload-point-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
 
-    <section>
-      <h2>Summary</h2>
+.workload-point-high {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
 
-      <div class="summary-container">
-        <div class="summary-card">
-          <h3>Total Projects</h3>
-          <p id="totalProjects">0</p>
-        </div>
+.action-owner-internal {
+  background-color: #e0f2fe;
+  color: #075985;
+}
 
-        <div class="summary-card">
-          <h3>High Priority</h3>
-          <p id="highPriorityProjects">0</p>
-        </div>
+.action-owner-external {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
 
-        <div class="summary-card">
-          <h3>Blocked</h3>
-          <p id="blockedProjects">0</p>
-        </div>
+.last-update {
+  background-color: #f3f4f6;
+  color: #374151;
+}
 
-        <div class="summary-card">
-          <h3>Near Deadline</h3>
-          <p id="nearDeadlineProjects">0</p>
-        </div>
-      </div>
-    </section>
+.block-reason {
+  color: #991b1b;
+  font-weight: bold;
+}
 
-    <section>
-      <h2>Filters</h2>
+.problem-text {
+  color: #92400e;
+  font-weight: bold;
+}
 
-      <div class="filter-container">
-        <div class="filter-item">
-          <label for="searchInput">Search Project</label>
-          <input id="searchInput" type="text" placeholder="Search by project name...">
-        </div>
+.next-action {
+  color: #111827;
+  font-weight: bold;
+}
 
-        <div class="filter-item">
-          <label for="ownerFilter">Owner</label>
-          <select id="ownerFilter">
-            <option value="All">All</option>
-          </select>
-        </div>
+.action-warning {
+  color: #9a3412;
+}
 
-        <div class="filter-item">
-          <label for="statusFilter">Status</label>
-          <select id="statusFilter">
-            <option value="All">All</option>
-          </select>
-        </div>
+a {
+  color: #2563eb;
+  font-weight: bold;
+  text-decoration: underline;
+}
 
-        <div class="filter-item">
-          <label for="priorityFilter">Priority</label>
-          <select id="priorityFilter">
-            <option value="All">All</option>
-          </select>
-        </div>
+a:hover {
+  color: #1d4ed8;
+}
 
-        <button id="resetFilterButton" class="reset-button">Reset Filters</button>
-      </div>
-    </section>
+.blocked-list {
+  display: grid;
+  gap: 12px;
+}
 
-    <section>
-      <h2>Workload Summary</h2>
-      <div id="workloadContainer" class="workload-container"></div>
-    </section>
+.blocked-card {
+  background-color: white;
+  border-left: 6px solid #ef4444;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
 
-    <section>
-      <h2>Project List</h2>
+.blocked-card h3 {
+  margin: 0 0 8px;
+  color: #991b1b;
+}
 
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Project</th>
-              <th>Owner</th>
-              <th>Stage</th>
-              <th>Status</th>
-              <th>Priority</th>
-              <th>Risk</th>
-              <th>Deadline</th>
-              <th>Days Left</th>
-              <th>Workload</th>
-              <th>Block Reason</th>
-              <th>Problem</th>
-              <th>Next Action</th>
-              <th>Action Owner</th>
-              <th>Last Update</th>
-              <th>Manual</th>
-            </tr>
-          </thead>
+.blocked-card p {
+  margin: 4px 0;
+  color: #374151;
+}
 
-          <tbody id="projectTableBody">
-            <tr>
-              <td colspan="15" class="empty-message">Loading project data...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+@media (max-width: 768px) {
+  .page {
+    padding: 16px;
+  }
 
-    <section>
-      <h2>Blocked Projects</h2>
-      <div id="blockedList" class="blocked-list"></div>
-    </section>
-  </div>
+  h1 {
+    font-size: 28px;
+  }
 
-</body>
-</html>
+  .summary-card,
+  .workload-card {
+    width: 100%;
+  }
+
+  input,
+  select {
+    min-width: 100%;
+  }
+
+  .filter-item {
+    width: 100%;
+  }
+}
+  color: #111827;
+}
+
+.page {
+  padding: 24px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 36px;
+}
+
+.subtitle {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: #111827;
+  font-size: 26px;
+}
+
+.summary-container,
+.workload-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.summary-card,
+.workload-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 240px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card {
+  border-left: 6px solid #2563eb;
+}
+
+.summary-card h3,
+.workload-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #374151;
+}
+
+.summary-card p,
+.workload-card p {
+  margin: 12px 0 4px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #111827;
+}
+
+.workload-card span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.workload-normal {
+  border-left: 6px solid #2563eb;
+}
+
+.workload-medium {
+  border-left: 6px solid #f59e0b;
+}
+
+.workload-high {
+  border-left: 6px solid #ef4444;
+}
+
+.filter-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: end;
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-item label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #374151;
+}
+
+input,
+select {
+  min-width: 180px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.reset-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1f2937;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #111827;
+}
+
+.table-container {
+  background-color: white;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  min-width: 2100px;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #1f2937;
+  color: white;
+}
+
+th {
+  text-align: left;
+  padding: 14px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.empty-message {
+  text-align: center;
+  color: #6b7280;
+  padding: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-on-track {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-risk {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.status-blocked {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-done {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.priority-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.priority-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.priority-low {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.risk-low {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.risk-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.risk-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.deadline-normal {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.deadline-soon {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.deadline-overdue {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
