@@ -107,7 +107,7 @@ h2 {
 
 table {
   width: 100%;
-  min-width: 1700px;
+  min-width: 1850px;
   border-collapse: collapse;
 }
 
@@ -195,6 +195,11 @@ td {
 .action-owner-external {
   background-color: #f3e8ff;
   color: #6b21a8;
+}
+
+.last-update {
+  background-color: #f3f4f6;
+  color: #374151;
 }
 
 a {
