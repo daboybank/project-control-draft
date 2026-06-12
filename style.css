@@ -107,7 +107,7 @@ h2 {
 
 table {
   width: 100%;
-  min-width: 1550px;
+  min-width: 1700px;
   border-collapse: collapse;
 }
 
@@ -185,6 +185,16 @@ td {
 
 .action-warning {
   color: #9a3412;
+}
+
+.action-owner-internal {
+  background-color: #e0f2fe;
+  color: #075985;
+}
+
+.action-owner-external {
+  background-color: #f3e8ff;
+  color: #6b21a8;
 }
 
 a {
