@@ -1,111 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-colorload-point-normal {  background-color: #f4f6f8;
-  background-color: #dbeafe;
-  color: #1e40af;
-}
-
-.workload-point-medium {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-
-.workload-point-high {
-  background-color: #ffedd5;
-  color: #9a3412;
-}
-
-.action-owner-internal {
-  background-color: #e0f2fe;
-  color: #075985;
-}
-
-.action-owner-external {
-  background-color: #f3e8ff;
-  color: #6b21a8;
-}
-
-.last-update {
-  background-color: #f3f4f6;
-  color: #374151;
-}
-
-.block-reason {
-  color: #991b1b;
-  font-weight: bold;
-}
-
-.problem-text {
-  color: #92400e;
-  font-weight: bold;
-}
-
-.next-action {
-  color: #111827;
-  font-weight: bold;
-}
-
-.action-warning {
-  color: #9a3412;
-}
-
-a {
-  color: #2563eb;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #1d4ed8;
-}
-
-.blocked-list {
-  display: grid;
-  gap: 12px;
-}
-
-.blocked-card {
-  background-color: white;
-  border-left: 6px solid #ef4444;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.blocked-card h3 {
-  margin: 0 0 8px;
-  color: #991b1b;
-}
-
-.blocked-card p {
-  margin: 4px 0;
-  color: #374151;
-}
-
-@media (max-width: 768px) {
-  .page {
-    padding: 16px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  .summary-card,
-  .workload-card {
-    width: 100%;
-  }
-
-  input,
-  select {
-    min-width: 100%;
-  }
-
-  .filter-item {
-    width: 100%;
-  }
-}
+  background-color: #f4f6f8;
   color: #111827;
 }
 
@@ -349,3 +245,108 @@ tbody tr:hover {
   color: #991b1b;
 }
 
+.workload-point-normal {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.workload-point-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.workload-point-high {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.action-owner-internal {
+  background-color: #e0f2fe;
+  color: #075985;
+}
+
+.action-owner-external {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
+
+.last-update {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.block-reason {
+  color: #991b1b;
+  font-weight: bold;
+}
+
+.problem-text {
+  color: #92400e;
+  font-weight: bold;
+}
+
+.next-action {
+  color: #111827;
+  font-weight: bold;
+}
+
+.action-warning {
+  color: #9a3412;
+}
+
+a {
+  color: #2563eb;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+.blocked-list {
+  display: grid;
+  gap: 12px;
+}
+
+.blocked-card {
+  background-color: white;
+  border-left: 6px solid #ef4444;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.blocked-card h3 {
+  margin: 0 0 8px;
+  color: #991b1b;
+}
+
+.blocked-card p {
+  margin: 4px 0;
+  color: #374151;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .summary-card,
+  .workload-card {
+    width: 100%;
+  }
+
+  input,
+  select {
+    min-width: 100%;
+  }
+
+  .filter-item {
+    width: 100%;
+  }
+}
