@@ -1,1 +1,54 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+}
 
+.page {
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #6b7280;
+}
+
+h2 {
+  margin-top: 32px;
+  color: #1f2937;
+}
+
+.summary-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.summary-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #2563eb;
+}
+
+.summary-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.summary-card p {
+  margin: 12px 0 0;
+  font-size: 32px;
+  font-weight: bold;
+  color: #111827;
+}
