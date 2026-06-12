@@ -16,29 +16,89 @@ document.addEventListener("DOMContentLoaded", function() {
   const priorityFilter = document.getElementById("priorityFilter");
   const resetFilterButton = document.getElementById("resetFilterButton");
 
-  fetch("data-sample.json?v=41")
+  const fallbackProjects = [
+    {
+      id: "P-001",
+      projectName: "Machine A Manual Update",
+      owner: "Bank",
+      stage: "In Progress",
+      status: "On Track",
+      priority: "High",
+      riskLevel: "Low",
+      deadline: "2026-06-20",
+      workloadPoint: 3,
+      blockReason: "",
+      problem: "",
+      nextAction: "Final check before review",
+      actionOwner: "Bank",
+      actionOwnerType: "Internal",
+      manualLink: "https://example.com",
+      lastUpdate: "2026-06-12"
+    },
+    {
+      id: "P-002",
+      projectName: "Machine B Setup Guide",
+      owner: "May",
+      stage: "Waiting Customer",
+      status: "Blocked",
+      priority: "High",
+      riskLevel: "High",
+      deadline: "2026-06-15",
+      workloadPoint: 5,
+      blockReason: "Waiting customer drawing",
+      problem: "Customer has not sent updated machine layout",
+      nextAction: "Follow up customer",
+      actionOwner: "Customer",
+      actionOwnerType: "External",
+      manualLink: "https://example.com",
+      lastUpdate: "2026-06-10"
+    },
+    {
+      id: "P-003",
+      projectName: "Robot Safety Checklist",
+      owner: "Bank",
+      stage: "Review",
+      status: "Risk",
+      priority: "Medium",
+      riskLevel: "Medium",
+      deadline: "2026-06-25",
+      workloadPoint: 2,
+      blockReason: "",
+      problem: "Need confirmation from safety team",
+      nextAction: "Ask safety team for approval",
+      actionOwner: "Safety Team",
+      actionOwnerType: "Internal",
+      manualLink: "https://example.com",
+      lastUpdate: "2026-06-11"
+    }
+  ];
+
+  fetch("data-sample.json?v=42", {
+    cache: "no-store"
+  })
     .then(function(response) {
       if (!response.ok) {
-        throw new Error("Cannot load data-sample.json");
+        throw new Error("Cannot load data-sample.json. HTTP status: " + response.status);
       }
 
       return response.json();
     })
     .then(function(projects) {
+      if (!Array.isArray(projects)) {
+        throw new Error("data-sample.json must be an array.");
+      }
+
       allProjects = projects;
       setupFilters(allProjects);
       renderDashboard(allProjects);
     })
     .catch(function(error) {
-      projectTableBody.innerHTML = `
-        <tr>
-          <td colspan="15" class="empty-message">
-            Cannot load project data. Please check data-sample.json.
-          </td>
-        </tr>
-      `;
-
       console.error("Data loading error:", error);
+
+      allProjects = fallbackProjects;
+      setupFilters(allProjects);
+      renderDashboard(allProjects);
+      showDataWarning("Warning: data-sample.json could not be loaded. Dashboard is showing fallback sample data from app.js. Please check file name and location.");
     });
 
   function renderDashboard(projects) {
@@ -79,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       if (project.status !== "Done") {
-        workloadByOwner[project.owner] += Number(project.workloadPoint);
+        workloadByOwner[project.owner] += Number(project.workloadPoint || 0);
       }
     });
 
@@ -115,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const sortedProjects = projects.slice().sort(function(a, b) {
-      return new Date(a.deadline) - new Date(b.deadline);
+      return new Date(a.deadline + "T00:00:00") - new Date(b.deadline + "T00:00:00");
     });
 
     projectTableBody.innerHTML = "";
@@ -197,18 +257,23 @@ document.addEventListener("DOMContentLoaded", function() {
     fillSelect(statusFilter, getUniqueValues(projects, "status"));
     fillSelect(priorityFilter, getUniqueValues(projects, "priority"));
 
+    searchInput.removeEventListener("input", applyFilters);
+    ownerFilter.removeEventListener("change", applyFilters);
+    statusFilter.removeEventListener("change", applyFilters);
+    priorityFilter.removeEventListener("change", applyFilters);
+
     searchInput.addEventListener("input", applyFilters);
     ownerFilter.addEventListener("change", applyFilters);
     statusFilter.addEventListener("change", applyFilters);
     priorityFilter.addEventListener("change", applyFilters);
 
-    resetFilterButton.addEventListener("click", function() {
+    resetFilterButton.onclick = function() {
       searchInput.value = "";
       ownerFilter.value = "All";
       statusFilter.value = "All";
       priorityFilter.value = "All";
       renderDashboard(allProjects);
-    });
+    };
   }
 
   function clearSelectOptions(selectElement) {
@@ -355,6 +420,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const safeManualLink = escapeAttribute(manualLink);
 
     return `<a href="${safeManualLink}" target="_blank" rel="noopener noreferrer">Open Manual</a>`;
+  }
+
+  function showDataWarning(message) {
+    const existingWarning = document.querySelector(".data-warning");
+
+    if (existingWarning) {
+      existingWarning.remove();
+    }
+
+    const warning = document.createElement("div");
+    warning.className = "data-warning";
+    warning.textContent = message;
+
+    const header = document.querySelector(".header");
+    header.appendChild(warning);
   }
 
   function escapeHtml(value) {
