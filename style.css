@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Control Dashboard</title>
-  <link rel="stylesheet" href="style.css?v=20">
+  <link rel="stylesheet" href="style.css?v=21">
+  <script src="app.js?v=21" defer></script>
 </head>
 <body>
 
@@ -119,6 +122,5 @@
     </section>
   </div>
 
-  <script src="app.js?v=20"></script>
 </body>
 </html>
