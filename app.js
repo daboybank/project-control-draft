@@ -70,36 +70,76 @@ document.addEventListener("DOMContentLoaded", function() {
       actionOwnerType: "Internal",
       manualLink: "https://example.com",
       lastUpdate: "2026-06-11"
+    },
+    {
+      id: "P-004",
+      projectName: "Machine C Operation Manual",
+      owner: "Nok",
+      stage: "Draft",
+      status: "On Track",
+      priority: "Low",
+      riskLevel: "Low",
+      deadline: "2026-07-05",
+      workloadPoint: 2,
+      blockReason: "",
+      problem: "",
+      nextAction: "Create first draft",
+      actionOwner: "Nok",
+      actionOwnerType: "Internal",
+      manualLink: "https://example.com",
+      lastUpdate: "2026-06-12"
+    },
+    {
+      id: "P-005",
+      projectName: "Packing Line Troubleshooting Guide",
+      owner: "May",
+      stage: "Done",
+      status: "Done",
+      priority: "Medium",
+      riskLevel: "Low",
+      deadline: "2026-06-18",
+      workloadPoint: 1,
+      blockReason: "",
+      problem: "",
+      nextAction: "No action required",
+      actionOwner: "May",
+      actionOwnerType: "Internal",
+      manualLink: "https://example.com",
+      lastUpdate: "2026-06-12"
     }
   ];
 
-  fetch("data-sample.json?v=43", {
-    cache: "no-store"
-  })
-    .then(function(response) {
-      if (!response.ok) {
-        throw new Error("Cannot load data-sample.json. HTTP status: " + response.status);
-      }
+  loadProjects();
 
-      return response.json();
+  function loadProjects() {
+    fetch("data-sample.json?v=44", {
+      cache: "no-store"
     })
-    .then(function(projects) {
-      if (!Array.isArray(projects)) {
-        throw new Error("data-sample.json must be an array.");
-      }
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error("Cannot load data-sample.json. HTTP status: " + response.status);
+        }
 
-      allProjects = projects;
-      setupFilters(allProjects);
-      renderDashboard(allProjects);
-    })
-    .catch(function(error) {
-      console.error("Data loading error:", error);
+        return response.json();
+      })
+      .then(function(projects) {
+        if (!Array.isArray(projects)) {
+          throw new Error("data-sample.json must be an array.");
+        }
 
-      allProjects = fallbackProjects;
-      setupFilters(allProjects);
-      renderDashboard(allProjects);
-      showDataWarning("Warning: data-sample.json could not be loaded. Dashboard is showing fallback sample data from app.js. Please check file name and location.");
-    });
+        allProjects = projects;
+        setupFilters(allProjects);
+        renderDashboard(allProjects);
+      })
+      .catch(function(error) {
+        console.error("Data loading error:", error);
+
+        allProjects = fallbackProjects;
+        setupFilters(allProjects);
+        renderDashboard(allProjects);
+        showDataWarning("Warning: data-sample.json could not be loaded. Dashboard is showing fallback sample data from app.js. Please check file name and location.");
+      });
+  }
 
   function renderDashboard(projects) {
     renderSummary(projects);
@@ -257,15 +297,10 @@ document.addEventListener("DOMContentLoaded", function() {
     fillSelect(statusFilter, getUniqueValues(projects, "status"));
     fillSelect(priorityFilter, getUniqueValues(projects, "priority"));
 
-    searchInput.removeEventListener("input", applyFilters);
-    ownerFilter.removeEventListener("change", applyFilters);
-    statusFilter.removeEventListener("change", applyFilters);
-    priorityFilter.removeEventListener("change", applyFilters);
-
-    searchInput.addEventListener("input", applyFilters);
-    ownerFilter.addEventListener("change", applyFilters);
-    statusFilter.addEventListener("change", applyFilters);
-    priorityFilter.addEventListener("change", applyFilters);
+    searchInput.oninput = applyFilters;
+    ownerFilter.onchange = applyFilters;
+    statusFilter.onchange = applyFilters;
+    priorityFilter.onchange = applyFilters;
 
     resetFilterButton.onclick = function() {
       searchInput.value = "";
