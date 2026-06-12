@@ -1,24 +1,6 @@
 [
   {
-    "id": "P-001",
-    "projectName": "Machine A Manual Update",
-    "    "blockReason": "",    "owner": "Bank",
-    "problem": "",
-    "nextAction": "Final check before review",
-    "actionOwner": "Bank",
-    "actionOwnerType": "Internal",
-    "manualLink": "https://example.com",
-    "lastUpdate": "2026-06-12"
-  },
-  {
-    "id": "P-002",
-    "projectName": "Machine B Setup Guide",
-    "owner": "May",
-    "stage": "Waiting Customer",
-    "status": "Blocked",
-    "priority": "High",
-    "riskLevel": "High",
-    "deadline": "2026-06-15",
+ "deadline": "2026-06-15",    "id": "P-001",
     "workloadPoint": 5,
     "blockReason": "Waiting customer drawing",
     "problem": "Customer has not sent updated machine layout",
@@ -47,9 +29,27 @@
     "lastUpdate": "2026-06-11"
   }
 ]
+    "projectName": "Machine A Manual Update",
+    "owner": "Bank",
     "stage": "In Progress",
     "status": "On Track",
     "priority": "High",
     "riskLevel": "Low",
     "deadline": "2026-06-20",
     "workloadPoint": 3,
+    "blockReason": "",
+    "problem": "",
+    "nextAction": "Final check before review",
+    "actionOwner": "Bank",
+    "actionOwnerType": "Internal",
+    "manualLink": "https://example.com",
+    "lastUpdate": "2026-06-12"
+  },
+  {
+    "id": "P-002",
+    "projectName": "Machine B Setup Guide",
+    "owner": "May",
+    "stage": "Waiting Customer",
+    "status": "Blocked",
+    "priority": "High",
+    "riskLevel": "High",
