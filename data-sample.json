@@ -12,7 +12,7 @@
     "problem": "",
     "manualLink": "https://example.com/manual-a",
     "lastUpdate": "2026-06-12",
-    "note": "Need final check before review"
+    "nextAction": "Final check before review"
   },
   {
     "id": "P-002",
@@ -27,6 +27,21 @@
     "problem": "Customer has not sent updated machine layout",
     "manualLink": "https://example.com/manual-b",
     "lastUpdate": "2026-06-10",
-    "note": "Need follow up customer"
+    "nextAction": "Follow up customer"
+  },
+  {
+    "id": "P-003",
+    "projectName": "Robot Safety Checklist",
+    "owner": "Tom",
+    "stage": "Review",
+    "status": "Risk",
+    "priority": "Medium",
+    "deadline": "2026-06-18",
+    "workloadPoint": 2,
+    "blockReason": "",
+    "problem": "Need confirmation from safety team",
+    "manualLink": "https://example.com/manual-c",
+    "lastUpdate": "2026-06-11",
+    "nextAction": "Ask safety team for approval"
   }
 ]
