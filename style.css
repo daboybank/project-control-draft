@@ -9,14 +9,9 @@ body {
   padding: 24px;
 }
 
-h1 { color: #1f2937; }
-.subtitle { color: #6b7280; }
-h2 { margin-top: 32px; color: #1f2937; }
-
 .summary-container {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
   margin-top: 16px;
 }
 
@@ -25,24 +20,20 @@ h2 { margin-top: 32px; color: #1f2937; }
   border-radius: 12px;
   padding: 20px;
   width: 240px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   border-left: 6px solid #2563eb;
 }
 
-.summary-card p {
-  font-size: 32px;
-  font-weight: bold;
-}
-
 .table-container {
-  margin-top: 16px;
+  margin-top: 20px;
   background-color: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-table { width: 100%; border-collapse: collapse; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
 thead {
   background-color: #1f2937;
@@ -57,7 +48,7 @@ td {
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* ✅ badge */
+/* ✅ BADGE */
 
 .badge {
   padding: 6px 12px;
@@ -65,8 +56,6 @@ td {
   font-size: 12px;
   font-weight: bold;
 }
-
-/* ✅ status */
 
 .status-on-track {
   background-color: #dcfce7;
@@ -78,8 +67,6 @@ td {
   color: #991b1b;
 }
 
-/* ✅ priority */
-
 .priority-high {
   background-color: #fee2e2;
   color: #991b1b;
@@ -89,4 +76,3 @@ a {
   color: #2563eb;
   font-weight: bold;
 }
-``
