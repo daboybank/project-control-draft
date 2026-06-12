@@ -2,14 +2,7 @@
   {
     "id": "P-001",
     "projectName": "Machine A Manual Update",
-    "owner": "Bank",
-    "stage": "In Progress",
-    "status": "On Track",
-    "priority": "High",
-    "riskLevel": "Low",
-    "deadline": "2026-06-20",
-    "workloadPoint": 3,
-    "blockReason": "",
+    "    "blockReason": "",    "owner": "Bank",
     "problem": "",
     "nextAction": "Final check before review",
     "actionOwner": "Bank",
@@ -54,3 +47,9 @@
     "lastUpdate": "2026-06-11"
   }
 ]
+    "stage": "In Progress",
+    "status": "On Track",
+    "priority": "High",
+    "riskLevel": "Low",
+    "deadline": "2026-06-20",
+    "workloadPoint": 3,
