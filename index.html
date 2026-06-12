@@ -34,6 +34,22 @@
       </div>
     </div>
 
+    <h2>Workload Summary</h2>
+
+    <div class="workload-container">
+      <div class="workload-card workload-normal">
+        <h3>Bank</h3>
+        <p>3 pts</p>
+        <span>Normal workload</span>
+      </div>
+
+      <div class="workload-card workload-high">
+        <h3>May</h3>
+        <p>5 pts</p>
+        <span>High workload</span>
+      </div>
+    </div>
+
     <h2>Project List</h2>
 
     <div class="table-container">
@@ -47,6 +63,7 @@
             <th>Priority</th>
             <th>Deadline</th>
             <th>Days Left</th>
+            <th>Workload</th>
             <th>Block Reason</th>
             <th>Manual</th>
           </tr>
@@ -67,6 +84,9 @@
             <td>
               <span class="badge deadline-normal">8 days left</span>
             </td>
+            <td>
+              <span class="badge workload-point-normal">3 pts</span>
+            </td>
             <td>-</td>
             <td>
               <a href="https://example.com" target="_blank" rel="noopener noreferrer">Open Manual</a>
@@ -86,6 +106,9 @@
             <td>2026-06-15</td>
             <td>
               <span class="badge deadline-soon">3 days left</span>
+            </td>
+            <td>
+              <span class="badge workload-point-high">5 pts</span>
             </td>
             <td class="block-reason">Waiting customer drawing</td>
             <td>
