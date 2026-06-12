@@ -44,6 +44,7 @@ function renderDashboard(projects) {
 
 function renderSummary(projects) {
   const totalProjects = projects.length;
+
   const highPriorityProjects = projects.filter(function(project) {
     return project.priority === "High";
   }).length;
@@ -114,6 +115,7 @@ function renderProjectTable(projects) {
   sortedProjects.forEach(function(project) {
     const daysLeft = calculateDaysLeft(project.deadline);
     const deadlineInfo = getDeadlineInfo(daysLeft);
+
     const statusClass = getStatusClass(project.status);
     const priorityClass = getPriorityClass(project.priority);
     const riskClass = getRiskClass(project.riskLevel);
@@ -130,13 +132,13 @@ function renderProjectTable(projects) {
       <td><span class="badge ${priorityClass}">${escapeHtml(project.priority)}</span></td>
       <td><span class="badge ${riskClass}">${escapeHtml(project.riskLevel)}</span></td>
       <td>${escapeHtml(project.deadline)}</td>
-      <td><span class="badge ${deadlineInfo.className}">${deadlineInfo.text}</span></td>
+      <td><span class="badge ${deadlineInfo.className}">${escapeHtml(deadlineInfo.text)}</span></td>
       <td><span class="badge ${workloadClass}">${escapeHtml(project.workloadPoint)} pts</span></td>
       <td class="${project.blockReason ? "block-reason" : ""}">${escapeHtml(project.blockReason || "-")}</td>
       <td class="problem-text">${escapeHtml(project.problem || "-")}</td>
       <td class="next-action ${project.status === "Blocked" ? "action-warning" : ""}">${escapeHtml(project.nextAction || "-")}</td>
       <td><span class="badge ${actionOwnerClass}">${escapeHtml(project.actionOwner || "-")}</span></td>
-      <td><span class="badge last-update">${escapeHtml(project.lastUpdate)}</span></td>
+      <td><span class="badge last-update">${escapeHtml(project.lastUpdate || "-")}</span></td>
       <td>${renderManualLink(project.manualLink)}</td>
     `;
 
@@ -326,7 +328,9 @@ function renderManualLink(manualLink) {
     return "<span>-</span>";
   }
 
-  return `<a href="${escapeHtml(manualLink)}" target="_blank" rel="noopener noreferrer">Open Manual</a>`;
+  const safeManualLink = escapeHtml(manualLink);
+
+  return `<a href="${safeManualLink}" target="_blank" rel="noopener noreferrer">Open Manual</a>`;
 }
 
 function escapeHtml(value) {
