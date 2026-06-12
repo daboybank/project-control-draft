@@ -35,7 +35,7 @@ h2 {
   background-color: white;
   border-radius: 12px;
   padding: 20px;
-  width: 200px;
+  width: 240px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border-left: 6px solid #2563eb;
 }
@@ -88,3 +88,4 @@ td {
   color: #6b7280;
   padding: 24px;
 }
+``
