@@ -1,1 +1,32 @@
-
+[
+  {
+    "id": "P-001",
+    "projectName": "Machine A Manual Update",
+    "owner": "Bank",
+    "stage": "In Progress",
+    "status": "On Track",
+    "priority": "High",
+    "deadline": "2026-06-20",
+    "workloadPoint": 3,
+    "blockReason": "",
+    "problem": "",
+    "manualLink": "https://example.com/manual-a",
+    "lastUpdate": "2026-06-12",
+    "note": "Need final check before review"
+  },
+  {
+    "id": "P-002",
+    "projectName": "Machine B Setup Guide",
+    "owner": "May",
+    "stage": "Waiting Customer",
+    "status": "Blocked",
+    "priority": "High",
+    "deadline": "2026-06-15",
+    "workloadPoint": 5,
+    "blockReason": "Waiting customer drawing",
+    "problem": "Customer has not sent updated machine layout",
+    "manualLink": "https://example.com/manual-b",
+    "lastUpdate": "2026-06-10",
+    "note": "Need follow up customer"
+  }
+]
