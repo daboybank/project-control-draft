@@ -2,147 +2,123 @@
 <html>
 <head>
   <title>Project Control Dashboard</title>
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
 
   <div class="page">
-    <h1>Project Control Dashboard</h1>
-    <p class="subtitle">This is my first project dashboard.</p>
-
-    <h2>Summary</h2>
-
-    <div class="summary-container">
-      <div class="summary-card">
-        <h3>Total Projects</h3>
-        <p>2</p>
+    <header class="header">
+      <div>
+        <h1>Project Control Dashboard</h1>
+        <p class="subtitle">Team project status, workload, deadline, and blocked issue tracking.</p>
       </div>
+    </header>
 
-      <div class="summary-card">
-        <h3>High Priority</h3>
-        <p>2</p>
+    <section>
+      <h2>Summary</h2>
+
+      <div class="summary-container">
+        <div class="summary-card">
+          <h3>Total Projects</h3>
+          <p id="totalProjects">0</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>High Priority</h3>
+          <p id="highPriorityProjects">0</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Blocked</h3>
+          <p id="blockedProjects">0</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Near Deadline</h3>
+          <p id="nearDeadlineProjects">0</p>
+        </div>
       </div>
+    </section>
 
-      <div class="summary-card">
-        <h3>Blocked</h3>
-        <p>1</p>
+    <section>
+      <h2>Filters</h2>
+
+      <div class="filter-container">
+        <div class="filter-item">
+          <label for="searchInput">Search Project</label>
+          <input id="searchInput" type="text" placeholder="Search by project name...">
+        </div>
+
+        <div class="filter-item">
+          <label for="ownerFilter">Owner</label>
+          <select id="ownerFilter">
+            <option value="All">All</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label for="statusFilter">Status</label>
+          <select id="statusFilter">
+            <option value="All">All</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label for="priorityFilter">Priority</label>
+          <select id="priorityFilter">
+            <option value="All">All</option>
+          </select>
+        </div>
+
+        <button id="resetFilterButton" class="reset-button">Reset Filters</button>
       </div>
+    </section>
 
-      <div class="summary-card">
-        <h3>Near Deadline</h3>
-        <p>1</p>
+    <section>
+      <h2>Workload Summary</h2>
+      <div id="workloadContainer" class="workload-container"></div>
+    </section>
+
+    <section>
+      <h2>Project List</h2>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Owner</th>
+              <th>Stage</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Risk</th>
+              <th>Deadline</th>
+              <th>Days Left</th>
+              <th>Workload</th>
+              <th>Block Reason</th>
+              <th>Problem</th>
+              <th>Next Action</th>
+              <th>Action Owner</th>
+              <th>Last Update</th>
+              <th>Manual</th>
+            </tr>
+          </thead>
+
+          <tbody id="projectTableBody">
+            <tr>
+              <td colspan="15" class="empty-message">Loading project data...</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+    </section>
 
-    <h2>Workload Summary</h2>
-
-    <div class="workload-container">
-      <div class="workload-card workload-normal">
-        <h3>Bank</h3>
-        <p>3 pts</p>
-        <span>Normal workload</span>
-      </div>
-
-      <div class="workload-card workload-high">
-        <h3>May</h3>
-        <p>5 pts</p>
-        <span>High workload</span>
-      </div>
-    </div>
-
-    <h2>Project List</h2>
-
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Project</th>
-            <th>Owner</th>
-            <th>Stage</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Risk Level</th>
-            <th>Deadline</th>
-            <th>Days Left</th>
-            <th>Workload</th>
-            <th>Block Reason</th>
-            <th>Next Action</th>
-            <th>Action Owner</th>
-            <th>Last Update</th>
-            <th>Manual</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Machine A Manual Update</td>
-            <td>Bank</td>
-            <td>In Progress</td>
-            <td>
-              <span class="badge status-on-track">On Track</span>
-            </td>
-            <td>
-              <span class="badge priority-high">High</span>
-            </td>
-            <td>
-              <span class="badge risk-low">Low</span>
-            </td>
-            <td>2026-06-20</td>
-            <td>
-              <span class="badge deadline-normal">8 days left</span>
-            </td>
-            <td>
-              <span class="badge workload-point-normal">3 pts</span>
-            </td>
-            <td>-</td>
-            <td class="next-action">Final check before review</td>
-            <td>
-              <span class="badge action-owner-internal">Bank</span>
-            </td>
-            <td>
-              <span class="badge last-update">2026-06-12</span>
-            </td>
-            <td>
-              <a href="https://example.com" target="_blank" rel="noopener noreferrer">Open Manual</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Machine B Setup Guide</td>
-            <td>May</td>
-            <td>Waiting Customer</td>
-            <td>
-              <span class="badge status-blocked">Blocked</span>
-            </td>
-            <td>
-              <span class="badge priority-high">High</span>
-            </td>
-            <td>
-              <span class="badge risk-high">High</span>
-            </td>
-            <td>2026-06-15</td>
-            <td>
-              <span class="badge deadline-soon">3 days left</span>
-            </td>
-            <td>
-              <span class="badge workload-point-high">5 pts</span>
-            </td>
-            <td class="block-reason">Waiting customer drawing</td>
-            <td class="next-action action-warning">Follow up customer</td>
-            <td>
-              <span class="badge action-owner-external">Customer</span>
-            </td>
-            <td>
-              <span class="badge last-update">2026-06-10</span>
-            </td>
-            <td>
-              <a href="https://example.com" target="_blank" rel="noopener noreferrer">Open Manual</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <section>
+      <h2>Blocked Projects</h2>
+      <div id="blockedList" class="blocked-list"></div>
+    </section>
   </div>
 
+  <script src="app.js?v=20"></script>
 </body>
 </html>
