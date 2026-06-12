@@ -107,7 +107,7 @@ h2 {
 
 table {
   width: 100%;
-  min-width: 1400px;
+  min-width: 1550px;
   border-collapse: collapse;
 }
 
@@ -176,6 +176,15 @@ td {
 .block-reason {
   color: #991b1b;
   font-weight: bold;
+}
+
+.next-action {
+  color: #1f2937;
+  font-weight: bold;
+}
+
+.action-warning {
+  color: #9a3412;
 }
 
 a {
